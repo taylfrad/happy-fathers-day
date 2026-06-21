@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Father's Day! 💙</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Caveat:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Floating hearts get injected here by script.js -->
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <main class="stage">
+    <!-- The envelope. Click it to open the card. -->
+    <div class="envelope" id="envelope" role="button" tabindex="0"
+         aria-label="Open your Father's Day card">
+      <div class="card" id="card">
+        <div class="card-inner">
+          <span class="badge">#1 DAD</span>
+          <h1 class="title">Happy<br />Father's Day!</h1>
+
+          <!-- ✏️ Your personal message lives here -->
+          <p class="message" id="message">
+            Thanks for everything you do, Dad.
+            You're my hero today and always. 💙
+          </p>
+
+          <p class="signoff">With love ❤️</p>
+        </div>
+      </div>
+      <div class="flap"></div>
+      <div class="pocket"></div>
+      <p class="hint" id="hint">tap to open 💌</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
