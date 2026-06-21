@@ -16,6 +16,9 @@
   <!-- Floating hearts get injected here by script.js -->
   <div class="hearts" id="hearts" aria-hidden="true"></div>
 
+  <!-- Full-screen fireworks burst from the redeem button -->
+  <canvas class="fireworks" id="fireworks" aria-hidden="true"></canvas>
+
   <main class="stage">
     <!-- The envelope. Click it to open the card. -->
     <div class="envelope" id="envelope" role="button" tabindex="0"
@@ -35,7 +38,16 @@
       </div>
       <div class="flap"></div>
       <div class="pocket"></div>
+      <div class="seal" aria-hidden="true"></div>
       <p class="hint" id="hint">tap to open 💌</p>
+    </div>
+
+    <!-- Gift button sits below the envelope; revealed when the card opens -->
+    <div class="gift" id="gift">
+      <button type="button" class="redeem-btn" id="redeemBtn">
+        🎁 Redeem Father's Day Gift
+      </button>
+      <p class="locked" id="locked" hidden></p>
     </div>
   </main>
 
