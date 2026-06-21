@@ -92,23 +92,27 @@ body {
   z-index: 4; /* on top while closed */
 }
 
-/* The card that lives inside */
+/* The card that lives inside.
+   It stays tucked (short) while closed and GROWS to fit its
+   content when opened, so text never spills onto the envelope. */
 .card {
   position: absolute;
   left: 20px;
   right: 20px;
-  top: 30px;
-  bottom: 20px;
+  top: 40px;
+  height: 180px;        /* tucked height while closed */
+  overflow: hidden;     /* safety net: content can't bleed onto the blue */
   background: var(--card);
   border-radius: 12px;
   box-shadow: 0 10px 24px rgba(58, 74, 90, 0.18);
-  z-index: 2; /* behind the pocket while closed */
+  z-index: 2;           /* behind the pocket while closed */
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.25, 1) 0.25s,
+              height 0.6s cubic-bezier(0.2, 0.8, 0.25, 1) 0.25s,
               z-index 0s 0.5s;
   display: grid;
   place-items: center;
   text-align: center;
-  padding: 18px;
+  padding: 22px;
 }
 .card-inner { transform: scale(0.9); opacity: 0; transition: all 0.4s ease 0.7s; }
 
@@ -136,9 +140,11 @@ body {
   transition: transform 0.5s ease, z-index 0s 0s;
 }
 .envelope.open .card {
-  transform: translateY(-220px) scale(1.05);
-  z-index: 6; /* pop in front of everything */
-  transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.1) 0.35s,
+  height: 250px;                    /* grow to comfortably fit the text */
+  transform: translateY(-250px);    /* rise up out of the envelope */
+  z-index: 6;                       /* pop in front of everything */
+  transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.05) 0.35s,
+              height 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.05) 0.35s,
               z-index 0s 0.35s;
 }
 .envelope.open .card-inner { transform: scale(1); opacity: 1; }
@@ -156,7 +162,7 @@ body {
   font-size: 0.8rem;
   box-shadow: 0 4px 10px rgba(245, 185, 66, 0.45);
   transform: rotate(-4deg);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 .title {
   font-family: "Baloo 2", sans-serif;
@@ -164,24 +170,20 @@ body {
   font-size: 2rem;
   line-height: 1.05;
   color: var(--ink);
-  margin-bottom: 12px;
-}
-.title::after {
-  content: "👔";
-  display: block;
-  font-size: 1.6rem;
-  margin-top: 6px;
+  margin-bottom: 16px;
 }
 .message {
-  font-family: "Caveat", cursive;
-  font-size: 1.4rem;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.45;
   color: var(--ink);
-  max-width: 26ch;
-  margin: 0 auto 10px;
+  max-width: 22ch;
+  margin: 0 auto 14px;
 }
 .signoff {
   font-family: "Caveat", cursive;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--accent);
   font-weight: 700;
 }
